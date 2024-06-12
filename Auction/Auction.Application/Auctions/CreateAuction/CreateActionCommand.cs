@@ -9,7 +9,7 @@ namespace Auction.Auction.Application.Auctions.CreateAuction
     /// <summary>
     /// Команда на создание аукциона
     /// </summary>
-    public record CreateActionCommand : IRequest<Result>
+    public record CreateActionCommand : IRequest<ResultBase>
     {
         /// <summary>
         /// Название команд аукциона

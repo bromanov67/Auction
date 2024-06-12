@@ -3,11 +3,21 @@ using FluentResults;
 
 namespace Auction.Auction.Application.Auctions.CreateAuction
 {
-    public class CreateAuctionCommandHandler : IRequestHandler <CreateActionCommand, Result>
+    /// <summary>
+    /// Обраточик команды создания аукциона
+    /// </summary>
+    public class CreateAuctionCommandHandler : IRequestHandler <CreateActionCommand, ResultBase>
     {
-        public Task<Result> Handle(CreateActionCommand request, CancellationToken cancellationToken) 
+
+        /// <summary>
+        /// inheritdoc
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public Task<ResultBase> Handle(CreateActionCommand request, CancellationToken cancellationToken) 
         {
-            return Task.FromResult(Result.Ok());
+            return Task.FromResult<ResultBase>(Result.Ok(Guid.NewGuid()));
         }
     }
 }
