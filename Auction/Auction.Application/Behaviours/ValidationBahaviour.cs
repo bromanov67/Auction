@@ -5,10 +5,13 @@ using MediatR;
 
 namespace Auction.Auction.Application.Behaviours
 {
+    /// <summary>
+    /// Пайплайн для валидации команд
+    /// </summary>
     public class ValidationBahaviour : IPipelineBehavior<CreateActionCommand, ResultBase>
     {
         private readonly IValidator<CreateActionCommand> _validator;
-        public ValidatonBehaviour(IValidator<CreateActionCommand> validator)
+        public ValidationBehaviour(IValidator<CreateActionCommand> validator)
         {
             _validator = validator;
         }
@@ -18,7 +21,8 @@ namespace Auction.Auction.Application.Behaviours
             if (validationResult.IsFailed)
                 return validationResult;
 
-            await next();
+            return await next();
         }
     }
 }
+ 
